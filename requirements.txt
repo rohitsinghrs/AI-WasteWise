@@ -1,0 +1,14 @@
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+tensorflow
+opencv-python
+Pillow
+jupyter
+notebook
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
