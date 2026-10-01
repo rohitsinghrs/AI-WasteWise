@@ -1,0 +1,7 @@
+class,image_count,percentage,relative_to_largest,shortfall_from_largest
+cardboard,403,15.95,0.6785,191
+glass,501,19.83,0.8434,93
+metal,410,16.22,0.6902,184
+paper,594,23.51,1.0,0
+plastic,482,19.07,0.8114,112
+trash,137,5.42,0.2306,457

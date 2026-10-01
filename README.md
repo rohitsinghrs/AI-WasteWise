@@ -1,42 +1,102 @@
-# ♻️ AI WasteWise
+# \## Project Status
 
-### AI-Powered Waste Segregation & Responsible Consumption Assistant
+# 
 
-AI WasteWise is an Applied AI project designed to help users identify common household waste, understand its category, receive appropriate disposal recommendations, and make more responsible consumption decisions.
+# The core AI WasteWise pipeline is complete.
 
-The system uses **Computer Vision, Machine Learning, and AI-based recommendations** to transform a waste image into an actionable disposal recommendation.
+# 
 
----
+# \### Completed
 
-## 📌 Project Overview
+# 
 
-Improper waste segregation is a common problem in households and communities. People may not always know whether an item belongs to recyclable, dry, wet, or general waste, or how it should be disposed of responsibly.
+# \- Dataset collection and organization
 
-**AI WasteWise** aims to address this problem through an intelligent image-based waste classification system.
+# \- Dataset exploratory analysis
 
-A user can upload an image of a waste item, and the system will:
+# \- Train/validation/test split
 
-1. Analyze the image.
-2. Identify the waste type.
-3. Predict the appropriate waste category.
-4. Provide a confidence score.
-5. Recommend the appropriate disposal method.
-6. Provide environmental and reuse suggestions.
-7. Allow users to interact with an AI assistant for waste-related questions.
+# \- Data preprocessing and augmentation
 
-### Example
+# \- MobileNetV2 transfer learning model
 
-```text
-Input
-  ↓
-Plastic Bottle Image
-  ↓
-AI Image Classification
-  ↓
-Detected: Plastic
-  ↓
-Category: Recyclable / Dry Waste
-  ↓
-Disposal Recommendation
-  ↓
-Environmental Tip
+# \- Class-weighted training for class imbalance
+
+# \- Model evaluation
+
+# \- Waste image prediction
+
+# \- Disposal recommendation system
+
+# \- Streamlit web application
+
+# \- FastAPI backend
+
+# \- API documentation through Swagger UI
+
+# 
+
+# \### Model Performance
+
+# 
+
+# The model was evaluated on 379 previously unseen test images.
+
+# 
+
+# \- Test Accuracy: 67.55%
+
+# \- Number of Classes: 6
+
+# \- Model: MobileNetV2
+
+# \- Input Size: 224 × 224
+
+# 
+
+# \### Supported Waste Categories
+
+# 
+
+# 1\. Cardboard
+
+# 2\. Glass
+
+# 3\. Metal
+
+# 4\. Paper
+
+# 5\. Plastic
+
+# 6\. Trash
+
+# 
+
+# \### Application Flow
+
+# 
+
+# User Image
+
+# → Image Preprocessing
+
+# → MobileNetV2
+
+# → Waste Classification
+
+# → Confidence Score
+
+# → Disposal Recommendation
+
+# 
+
+# \### Current Limitation
+
+# 
+
+# The model is trained on the TrashNet dataset and therefore performance can vary on real-world images with different backgrounds, lighting conditions, object orientations, and waste categories.
+
+# 
+
+# Low-confidence predictions should be manually verified before disposal.
+
