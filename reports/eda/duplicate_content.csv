@@ -1,0 +1,7 @@
+sha256,class,filename,relative_path,group_size,classes_in_group,cross_class
+81546d1362d75fc60718e5852593c58f66f813e8c1e9d1eae6871fedb02e2868,glass,glass115.jpg,data\raw\glass\glass115.jpg,2,glass|metal,True
+81546d1362d75fc60718e5852593c58f66f813e8c1e9d1eae6871fedb02e2868,metal,metal91.jpg,data\raw\metal\metal91.jpg,2,glass|metal,True
+c41b99aec8a3257c8668a2144ebbaf8042018f0a85d88e22bf4e413b43693dd8,glass,glass176.jpg,data\raw\glass\glass176.jpg,2,glass|plastic,True
+c41b99aec8a3257c8668a2144ebbaf8042018f0a85d88e22bf4e413b43693dd8,plastic,plastic152.jpg,data\raw\plastic\plastic152.jpg,2,glass|plastic,True
+e971f4f8f50e960e454ea724cec922fc2988bbf4027aa48b553e139bb5890968,glass,glass389.jpg,data\raw\glass\glass389.jpg,2,glass|plastic,True
+e971f4f8f50e960e454ea724cec922fc2988bbf4027aa48b553e139bb5890968,plastic,plastic332.jpg,data\raw\plastic\plastic332.jpg,2,glass|plastic,True

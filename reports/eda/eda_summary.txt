@@ -1,0 +1,49 @@
+AI WasteWise - Dataset EDA Summary
+==========================================
+
+Dataset location: D:\AI-WasteWise\AI-WasteWise\data\raw
+Classes detected: 6
+Total images: 2527
+Readable images: 2527
+Unreadable images: 0
+
+Class distribution
+--------------------
+cardboard         403 images ( 15.95%)
+glass             501 images ( 19.83%)
+metal             410 images ( 16.22%)
+paper             594 images ( 23.51%)
+plastic           482 images ( 19.07%)
+trash             137 images (  5.42%)
+
+Imbalance analysis
+--------------------
+Maximum class size: 594
+Minimum class size: 137
+Imbalance ratio: 4.34
+Assessment: Significant class imbalance
+
+Duplicate-content analysis
+----------------------------
+Duplicate image rows: 6
+Duplicate groups: 3
+Cross-class duplicate groups: 3
+
+Cross-class duplicate groups:
+
+SHA256: 81546d1362d75fc60718e5852593c58f66f813e8c1e9d1eae6871fedb02e2868
+  glass/glass115.jpg
+  metal/metal91.jpg
+
+SHA256: c41b99aec8a3257c8668a2144ebbaf8042018f0a85d88e22bf4e413b43693dd8
+  glass/glass176.jpg
+  plastic/plastic152.jpg
+
+SHA256: e971f4f8f50e960e454ea724cec922fc2988bbf4027aa48b553e139bb5890968
+  glass/glass389.jpg
+  plastic/plastic332.jpg
+
+Expected TrashNet classes
+---------------------------
+Missing expected classes: None
+Unexpected classes: None
