@@ -12,15 +12,15 @@
 
 # \- Dataset collection and organization
 
-# \- Dataset exploratory analysis
+# \- Exploratory Data Analysis
 
-# \- Train/validation/test split
+# \- Dataset train/validation/test split
 
-# \- Data preprocessing and augmentation
+# \- Image preprocessing and augmentation
 
-# \- MobileNetV2 transfer learning model
+# \- MobileNetV2 transfer learning
 
-# \- Class-weighted training for class imbalance
+# \- Class-weighted model training
 
 # \- Model evaluation
 
@@ -32,7 +32,7 @@
 
 # \- FastAPI backend
 
-# \- API documentation through Swagger UI
+# \- Swagger API documentation
 
 # 
 
@@ -40,11 +40,9 @@
 
 # 
 
-# The model was evaluated on 379 previously unseen test images.
-
-# 
-
 # \- Test Accuracy: 67.55%
+
+# \- Test Images: 379
 
 # \- Number of Classes: 6
 
@@ -54,49 +52,19 @@
 
 # 
 
-# \### Supported Waste Categories
+# \### Waste Categories
 
 # 
 
-# 1\. Cardboard
+# \- Cardboard
 
-# 2\. Glass
+# \- Glass
 
-# 3\. Metal
+# \- Metal
 
-# 4\. Paper
+# \- Paper
 
-# 5\. Plastic
+# \- Plastic
 
-# 6\. Trash
-
-# 
-
-# \### Application Flow
-
-# 
-
-# User Image
-
-# → Image Preprocessing
-
-# → MobileNetV2
-
-# → Waste Classification
-
-# → Confidence Score
-
-# → Disposal Recommendation
-
-# 
-
-# \### Current Limitation
-
-# 
-
-# The model is trained on the TrashNet dataset and therefore performance can vary on real-world images with different backgrounds, lighting conditions, object orientations, and waste categories.
-
-# 
-
-# Low-confidence predictions should be manually verified before disposal.
+# \- Trash
 
