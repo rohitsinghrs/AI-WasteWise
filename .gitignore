@@ -29,3 +29,9 @@ data/processed/*
 Thumbs.db
 .vscode/
 .idea/
+
+# Python virtual environments
+.venv/
+.venv312/
+__pycache__/
+*.pyc
