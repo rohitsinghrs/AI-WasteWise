@@ -1,7 +1,8 @@
 <img width="1472" height="662" alt="Dashboard png" src="https://github.com/user-attachments/assets/99db0b24-97f0-47fc-a56b-52b3e75d245a" /># ♻️ AI-WasteWise — AI-Powered Waste Classification
 
 <p align="center">
-  <img src="assets/banner.png" alt="AI-WasteWise Project Banner" width="100%">
+  <img src="<img width="683" height="192" alt="Banner png" src="https://github.com/user-attachments/assets/38bcd2ac-8c67-4b13-935f-f9b4b6a99c80" />
+" alt="AI-WasteWise Project Banner" width="100%">
 </p>
 
 <p align="center">
@@ -101,7 +102,7 @@ The actual prediction quality depends on the training dataset, image quality, an
 ### Prediction History and Analytics
 
 <p align="center">
-  <img src="assets/prediction-history.png" alt="AI-WasteWise Prediction History" width="90%">
+  <img src=""D:\Downloads\Prediction.png.png"" alt="AI-WasteWise Prediction History" width="90%">
 </p>
 
 ## ⚙️ How It Works
