@@ -1,4 +1,4 @@
-# ♻️ AI-WasteWise — AI-Powered Waste Classification
+<img width="1472" height="662" alt="Dashboard png" src="https://github.com/user-attachments/assets/99db0b24-97f0-47fc-a56b-52b3e75d245a" /># ♻️ AI-WasteWise — AI-Powered Waste Classification
 
 <p align="center">
   <img src="assets/banner.png" alt="AI-WasteWise Project Banner" width="100%">
@@ -88,7 +88,8 @@ The actual prediction quality depends on the training dataset, image quality, an
 
 <!-- Replace dashboard.png with a real screenshot of your dashboard. -->
 <p align="center">
-  <img src="assets/dashboard.png" alt="AI-WasteWise Analytics Dashboard" width="90%">
+  <img src="<img width="1472" height="662" alt="Dashboard png" src="https://github.com/user-attachments/assets/b35e20ed-5d7c-4ad2-a8e9-b13c643f60ed" />
+" alt="AI-WasteWise Analytics Dashboard" width="90%">
 </p>
 
 ### Waste Image Prediction
