@@ -5,6 +5,9 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+import numpy as np
+import cv2
 from PIL import Image
 
 
@@ -33,6 +36,22 @@ from src.database import (
     get_category_distribution,
     clear_predictions,
 )
+
+
+def contains_detectable_face(image: Image.Image) -> bool:
+    """Return True when OpenCV's frontal-face detector finds a face.
+
+    This is a limited guard for obvious face photos, not a general non-waste
+    classifier. Other non-waste images can still fool the waste classifier.
+    """
+    cascade_path = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+    detector = cv2.CascadeClassifier(cascade_path)
+    rgb = np.array(image.convert("RGB"))
+    gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)
+    faces = detector.detectMultiScale(
+        gray, scaleFactor=1.1, minNeighbors=5, minSize=(40, 40)
+    )
+    return len(faces) > 0
 
 
 # ============================================================
@@ -351,36 +370,44 @@ else:
         )
 
 
-        timeline_df = (
-            history_df
-            .set_index("timestamp")
-            .resample("D")
-            .size()
-        )
+        # Convert timestamps safely, then count predictions per calendar day.
+        timeline_source = history_df.copy()
+        timeline_source["timestamp"] = pd.to_datetime(
+            timeline_source["timestamp"], errors="coerce", utc=True
+        ).dt.tz_convert(None)
+        timeline_source = timeline_source.dropna(subset=["timestamp"])
 
-        if not timeline_df.empty:
-            # Add missing calendar days with a count of zero.
+        if not timeline_source.empty:
+            daily_counts = timeline_source.set_index("timestamp").resample("D").size()
             full_dates = pd.date_range(
-                start=timeline_df.index.min().normalize(),
-                end=timeline_df.index.max().normalize(),
+                start=daily_counts.index.min().normalize(),
+                end=daily_counts.index.max().normalize(),
                 freq="D",
             )
+            daily_counts = daily_counts.reindex(full_dates, fill_value=0)
 
-            timeline_df = timeline_df.reindex(
-                full_dates,
-                fill_value=0,
+            # Matplotlib gives explicit date ticks; Streamlit's automatic axis
+            # can otherwise show numeric offsets instead of calendar dates.
+            fig, ax = plt.subplots(figsize=(10, 4))
+            ax.plot(
+                daily_counts.index,
+                daily_counts.values,
+                marker="o",
+                linewidth=2,
             )
-
-            timeline_df.index.name = "Date"
-            timeline_df = timeline_df.to_frame(
-                name="Predictions"
-            )
-
-            st.line_chart(
-                timeline_df,
-                y="Predictions",
-                y_label="Predictions per day",
-            )
+            ax.set_title("Daily Waste Predictions")
+            ax.set_xlabel("Date")
+            ax.set_ylabel("Number of Predictions")
+            ax.set_ylim(bottom=0)
+            ax.xaxis.set_major_locator(mdates.AutoDateLocator())
+            ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b %Y"))
+            fig.autofmt_xdate(rotation=30)
+            ax.grid(True, alpha=0.3)
+            fig.tight_layout()
+            st.pyplot(fig)
+            plt.close(fig)
+        else:
+            st.info("No valid timestamps are available for the timeline chart.")
 
 
         # ====================================================
@@ -491,6 +518,15 @@ if uploaded_file is not None:
         type="primary",
         use_container_width=True,
     ):
+
+        # Face guard: stop obvious face photos before sending them to the
+        # six-class waste model. This does not detect every kind of non-waste.
+        if contains_detectable_face(image):
+            st.error(
+                "Face detected. Please upload a clear photo of a waste item, "
+                "not a face/person photo. No waste prediction was saved."
+            )
+            st.stop()
 
         with st.spinner(
             "🤖 AI is analyzing the image..."
