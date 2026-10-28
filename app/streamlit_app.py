@@ -311,24 +311,30 @@ else:
         )
 
         confidence_df = (
-            history_df[
-                [
-                    "id",
-                    "confidence",
-                ]
-            ]
+            history_df
             .sort_values("id")
-            .set_index("id")
+            .reset_index(drop=True)
         )
 
+        # Use sequential positions (1, 2, 3...) instead of database IDs.
+        # Database IDs may have gaps after records are deleted.
+        confidence_df["Prediction Number"] = range(
+            1, len(confidence_df) + 1
+        )
 
-        confidence_df.columns = [
-            "Confidence (%)"
-        ]
-
+        confidence_df = confidence_df[
+            ["Prediction Number", "confidence"]
+        ].rename(
+            columns={
+                "confidence": "Confidence (%)"
+            }
+        ).set_index("Prediction Number")
 
         st.line_chart(
-            confidence_df
+            confidence_df,
+            y="Confidence (%)",
+            x_label="Prediction Number",
+            y_label="Confidence (%)",
         )
 
 
@@ -346,14 +352,30 @@ else:
             .set_index("timestamp")
             .resample("D")
             .size()
-            .rename("Predictions")
         )
 
-
         if not timeline_df.empty:
+            # Add missing calendar days with a count of zero.
+            full_dates = pd.date_range(
+                start=timeline_df.index.min().normalize(),
+                end=timeline_df.index.max().normalize(),
+                freq="D",
+            )
+
+            timeline_df = timeline_df.reindex(
+                full_dates,
+                fill_value=0,
+            )
+
+            timeline_df.index.name = "Date"
+            timeline_df = timeline_df.to_frame(
+                name="Predictions"
+            )
 
             st.line_chart(
-                timeline_df
+                timeline_df,
+                y="Predictions",
+                y_label="Predictions per day",
             )
 
 
