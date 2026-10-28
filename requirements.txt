@@ -12,3 +12,4 @@ fastapi
 uvicorn[standard]
 python-multipart
 python-dotenv
+opencv-python-headless==4.10.0.84
