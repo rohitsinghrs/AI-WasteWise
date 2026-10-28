@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
+import matplotlib.pyplot as plt
 from PIL import Image
 
 
@@ -317,25 +318,28 @@ else:
         )
 
         # Use sequential positions (1, 2, 3...) instead of database IDs.
-        # Database IDs may have gaps after records are deleted.
         confidence_df["Prediction Number"] = range(
             1, len(confidence_df) + 1
         )
 
-        confidence_df = confidence_df[
-            ["Prediction Number", "confidence"]
-        ].rename(
-            columns={
-                "confidence": "Confidence (%)"
-            }
-        ).set_index("Prediction Number")
-
-        st.line_chart(
-            confidence_df,
-            y="Confidence (%)",
-            x_label="Prediction Number",
-            y_label="Confidence (%)",
+        # Matplotlib lets us explicitly control both axes.
+        fig, ax = plt.subplots(figsize=(10, 4))
+        ax.plot(
+            confidence_df["Prediction Number"],
+            confidence_df["confidence"],
+            marker="o",
+            linewidth=2,
         )
+        ax.set_xlabel("Prediction Number")
+        ax.set_ylabel("Confidence (%)")
+        ax.set_title("Model Confidence for Each Prediction")
+        ax.set_ylim(0, 100)
+        ax.set_xlim(1, max(2, len(confidence_df)))
+        ax.set_xticks(confidence_df["Prediction Number"].tolist())
+        ax.grid(True, alpha=0.3)
+        fig.tight_layout()
+        st.pyplot(fig)
+        plt.close(fig)
 
 
         # ====================================================
